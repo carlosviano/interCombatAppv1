@@ -14,7 +14,7 @@ const LoginScreen = ({ navigation }: any) => {
       <Button mode="contained" onPress={login} style={styles.button}>
         Entrar
       </Button>
-      <Button onPress={() => navigation.navigate("Register")}>
+      <Button onPress={() => navigation.navigate("PreLoginScreen")}>
         Registrarse
       </Button>
     </View>
