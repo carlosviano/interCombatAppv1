@@ -1,33 +1,39 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Button, Text, TextInput } from "react-native-paper";
-import { useAuthStore } from "../../state/authStore";
+import { Text } from "react-native-paper";
+import { RouteProp, useRoute } from "@react-navigation/native";
+import { AuthStackParamList } from "@/src/navigation/AuthNavigator";
 
-const RegisterScreen = ({ navigation }: any) => {
-  const login = useAuthStore((state) => state.login);
+type RegisterScreenRouteProp = RouteProp<AuthStackParamList, "Register">;
+
+const RegisterScreen = () => {
+  const route = useRoute<RegisterScreenRouteProp>();
+  const { userType } = route.params;
+
+  const renderUserTypeMessage = () => {
+    switch (userType) {
+      case "peleador":
+        return "Eres Peleador";
+      case "entrenador":
+        return "Eres Entrenador";
+      case "gimnasio":
+        return "Eres Gimnasio";
+      default:
+        return "";
+    }
+  };
 
   return (
     <View style={styles.container}>
-      <Text variant="titleLarge">Registrarse</Text>
-      <TextInput label="Email" style={styles.input} />
-      <TextInput label="Contraseña" secureTextEntry style={styles.input} />
-      <TextInput
-        label="Confirmar Contraseña"
-        secureTextEntry
-        style={styles.input}
-      />
-      <Button mode="contained" onPress={login} style={styles.button}>
-        Crear Cuenta
-      </Button>
-      <Button onPress={() => navigation.goBack()}>Volver al Login</Button>
+      <Text variant="headlineMedium">Registro</Text>
+      <Text variant="bodyLarge">{renderUserTypeMessage()}</Text>
+      {/* Aquí iría el formulario correspondiente para cada tipo */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: "center", padding: 20 },
-  input: { marginBottom: 10 },
-  button: { marginVertical: 10 },
 });
 
 export default RegisterScreen;
