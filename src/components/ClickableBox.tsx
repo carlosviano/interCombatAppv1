@@ -8,7 +8,6 @@ import {
   StyleSheet,
 } from "react-native";
 
-// Definimos las props: ya no incluimos imageSource ya que usaremos un require fijo.
 export type ClickableBoxProps = TouchableOpacityProps & {
   text: string;
 };
