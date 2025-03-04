@@ -15,22 +15,27 @@ const HomeScreen = () => {
     <SafeAreaView
       style={[styles.container, { backgroundColor: colors.background }]}
     >
-      <View>
-        <Text style={styles.title}>Bienvenido, {userName}</Text>
-      </View>
+      <View style={styles.content}>
+        <View style={styles.headerContainer}>
+          <Text style={styles.title}>Bienvenido, {userName}</Text>
+          <Text style={styles.subtitle}>
+            Quedan 10 días para tu próxima pelea
+          </Text>
+        </View>
 
-      <View style={styles.boxContainer}>
-        {cajasMock.map((item) =>
-          item == "Profile" ? (
-            <ClickableBox
-              text={item}
-              key={item}
-              onPress={() => navigation.navigate("ProfileFlow")}
-            />
-          ) : (
-            <ClickableBox text={item} key={item} />
-          )
-        )}
+        <View style={styles.boxContainer}>
+          {cajasMock.map((item) =>
+            item === "Profile" ? (
+              <ClickableBox
+                text={item}
+                key={item}
+                onPress={() => navigation.navigate("ProfileFlow")}
+              />
+            ) : (
+              <ClickableBox text={item} key={item} />
+            )
+          )}
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -41,17 +46,28 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
+  },
+  content: {
+    flex: 1,
     justifyContent: "center",
+    paddingHorizontal: 16,
+  },
+  headerContainer: {
+    marginBottom: 20,
+    paddingHorizontal: 32,
+    alignItems: "flex-start",
   },
   title: {
     fontSize: 24,
     fontWeight: "600",
     color: "#FFF",
-    textAlign: "center",
+  },
+  subtitle: {
+    fontSize: 16,
+    color: "#FFF",
+    marginTop: 4,
   },
   boxContainer: {
-    top: 60,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
