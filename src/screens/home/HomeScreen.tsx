@@ -1,12 +1,16 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, View, Text } from "react-native";
-import ClickableBox from "@/src/components/ClickableBox"; // tu componente con imagen + texto debajo
 import { useTheme } from "react-native-paper";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
+import { MainStackParamList } from "@/src/navigation/MainNavigator";
+import ClickableBox from "@/src/components/ClickableBox";
 
 export default function HomeScreen() {
   const userName = "Carlos";
   const cajasMock = ["Profile", "Eventos", "Calendario", "Noticias"];
   const { colors } = useTheme();
+
+  const navigation = useNavigation<NavigationProp<MainStackParamList>>();
 
   return (
     <SafeAreaView
@@ -19,9 +23,17 @@ export default function HomeScreen() {
         </Text>
 
         <View style={styles.boxContainer}>
-          {cajasMock.map((item) => (
-            <ClickableBox text={item} key={item} />
-          ))}
+          {cajasMock.map((item) =>
+            item === "Profile" ? (
+              <ClickableBox
+                key={item}
+                text={item}
+                onPress={() => navigation.navigate("ProfileFlow")}
+              />
+            ) : (
+              <ClickableBox key={item} text={item} />
+            )
+          )}
         </View>
       </View>
     </SafeAreaView>
