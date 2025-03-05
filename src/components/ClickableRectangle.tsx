@@ -8,27 +8,19 @@ import {
   StyleSheet,
 } from "react-native";
 
-export type ClickableBoxProps = TouchableOpacityProps & {
+export type ClickableRectangleProps = TouchableOpacityProps & {
   text: string;
-  imageUrl: keyof typeof images;
 };
 
-const images = {
-  calendario: require("../assets/images/calendario.webp"),
-  homepage: require("../assets/images/homepage.png"),
-  profile: require("../assets/images/profile.png"),
-};
-
-export default function ClickableBox({
+export default function ClickableRectangle({
   text,
-  imageUrl,
   onPress,
-}: ClickableBoxProps) {
+}: ClickableRectangleProps) {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.box} onPress={onPress}>
         <Image
-          source={images[imageUrl]}
+          source={require("../assets/images/eventos.png")}
           style={styles.image}
           resizeMode="cover"
         />
@@ -40,13 +32,13 @@ export default function ClickableBox({
 
 const styles = StyleSheet.create({
   container: {
-    width: "40%",
+    width: "100%",
     margin: 10,
     alignItems: "center",
   },
   box: {
     width: "100%",
-    aspectRatio: 1,
+    aspectRatio: 3,
     backgroundColor: "#222",
     borderRadius: 12,
     overflow: "hidden",
@@ -54,6 +46,7 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%",
+    resizeMode: "repeat",
   },
   boxText: {
     color: "#FFF",

@@ -4,36 +4,45 @@ import { useTheme } from "react-native-paper";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { MainStackParamList } from "@/src/navigation/MainNavigator";
 import ClickableBox from "@/src/components/ClickableBox";
+import ClickableRectangle from "@/src/components/ClickableRectangle";
 
 export default function HomeScreen() {
   const userName = "Carlos";
-  const cajasMock = ["Profile", "Eventos", "Calendario", "Noticias"];
+  const cajasMock = ["Profile", "Calendario"];
   const { colors } = useTheme();
-
   const navigation = useNavigation<NavigationProp<MainStackParamList>>();
 
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: colors.background }]}
     >
-      <View style={styles.content}>
-        <Text style={styles.title}>Bienvenido, {userName}</Text>
-        <Text style={styles.subtitle}>
-          Quedan 10 días para tu próxima pelea
-        </Text>
+      <View style={styles.contentContainer}>
+        <View style={styles.content}>
+          <Text style={styles.title}>Bienvenido, {userName}</Text>
+          <Text style={styles.subtitle}>
+            Quedan 10 días para tu próxima pelea
+          </Text>
 
-        <View style={styles.boxContainer}>
-          {cajasMock.map((item) =>
-            item === "Profile" ? (
-              <ClickableBox
-                key={item}
-                text={item}
-                onPress={() => navigation.navigate("ProfileFlow")}
-              />
-            ) : (
-              <ClickableBox key={item} text={item} />
-            )
-          )}
+          <View style={styles.boxContainer}>
+            <View style={styles.topRow}>
+              {cajasMock.map((item) =>
+                item === "Profile" ? (
+                  <ClickableBox
+                    imageUrl="profile"
+                    key={item}
+                    text={item}
+                    onPress={() => navigation.navigate("ProfileFlow")}
+                  />
+                ) : (
+                  <ClickableBox key={item} text={item} imageUrl="calendario" />
+                )
+              )}
+            </View>
+
+            <View style={styles.bottomRow}>
+              <ClickableRectangle text="Eventos" />
+            </View>
+          </View>
         </View>
       </View>
     </SafeAreaView>
@@ -44,8 +53,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  content: {
+  contentContainer: {
     flex: 1,
+    justifyContent: "center",
+  },
+  content: {
     width: "90%",
     alignSelf: "center",
     justifyContent: "center",
@@ -65,8 +77,16 @@ const styles = StyleSheet.create({
     marginLeft: 16,
   },
   boxContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
     justifyContent: "space-between",
+  },
+  topRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+  },
+  bottomRow: {
+    marginTop: 20,
+    alignItems: "center",
+    width: "100%",
   },
 });

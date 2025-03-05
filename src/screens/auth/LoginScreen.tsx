@@ -1,9 +1,9 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Button, Text, useTheme } from "react-native-paper";
+import { Text, useTheme } from "react-native-paper";
 import { useAuthStore } from "../../state/authStore";
 import { StyledTextInput } from "@/src/components/StyledInput";
-import ButtonContained from "../../components/ButtonContained";
+import StyledButton from "@/src/components/StyledButton";
 
 const LoginScreen = ({ navigation }: any) => {
   const { colors } = useTheme();
@@ -20,12 +20,8 @@ const LoginScreen = ({ navigation }: any) => {
         secureTextEntry
         style={styles.input}
       />
-      <ButtonContained
-        buttonText="Entrar"
-        onPress={login}
-        style={styles.button}
-      />
-      <ButtonContained
+      <StyledButton buttonText="Entrar" onPress={login} style={styles.button} />
+      <StyledButton
         buttonText="Registrarme"
         onPress={() => navigation.navigate("PreLoginScreen")}
       />

@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { Button, Text, useTheme } from "react-native-paper";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { ProfileStackParamList } from "../../navigation/ProfileNavigator";
-import ButtonContained from "@/src/components/ButtonContained";
+import StyledButton from "@/src/components/StyledButton";
 import { MainStackParamList } from "@/src/navigation/MainNavigator";
 
 const ProfileScreen = () => {
@@ -29,7 +29,7 @@ const ProfileScreen = () => {
       >
         Editar Perfil
       </Button>
-      <ButtonContained
+      <StyledButton
         buttonText="atras"
         onPress={() => mainNavigation.navigate("Home")}
       />

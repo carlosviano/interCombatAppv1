@@ -2,18 +2,18 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { Button, ButtonProps } from "react-native-paper";
 
-type ButtonContainedProps = Omit<ButtonProps, "children"> & {
+type StyledButtonProps = Omit<ButtonProps, "children"> & {
   buttonText: string;
 };
 
-export default function ButtonContained({
+export default function StyledButton({
   buttonText,
   style,
+  mode = "contained",
   ...props
-}: ButtonContainedProps) {
+}: StyledButtonProps) {
   return (
     <Button
-      mode="contained"
       buttonColor="#2C2C2C"
       textColor="#FFFFFF"
       style={[styles.buttonContainer, style]}
