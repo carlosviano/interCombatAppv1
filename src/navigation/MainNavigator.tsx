@@ -12,7 +12,7 @@ const MainStack = createStackNavigator<MainStackParamList>();
 
 const MainNavigator = () => {
   return (
-    <MainStack.Navigator>
+    <MainStack.Navigator screenOptions={{ headerShown: false }}>
       <MainStack.Screen name="Home" component={HomeScreen} />
       <MainStack.Screen
         name="ProfileFlow"

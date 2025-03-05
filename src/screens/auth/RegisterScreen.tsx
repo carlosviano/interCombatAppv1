@@ -15,7 +15,7 @@ import {
   REGISTER_OPTIONS_GIMNASIO,
   RegisterFormField,
 } from "@/src/const/registerOptions";
-import ButtonContained from "@/src/components/ButtonContained";
+import StyledButton from "@/src/components/StyledButton";
 import { StyledTextInput } from "@/src/components/StyledInput";
 
 type RegisterScreenRouteProp = RouteProp<AuthStackParamList, "Register">;
@@ -56,11 +56,11 @@ const RegisterScreen = () => {
           style={styles.input}
         />
       ))}
-      <ButtonContained
+      <StyledButton
         buttonText="Crear cuenta"
         onPress={() => navigation.navigate("Login")}
       />
-      <ButtonContained
+      <StyledButton
         buttonText="atras"
         onPress={() => navigation.navigate("PreLoginScreen")}
       />

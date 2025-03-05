@@ -4,7 +4,7 @@ import { View, StyleSheet } from "react-native";
 import { Text, useTheme } from "react-native-paper";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { AuthStackParamList } from "@/src/navigation/AuthNavigator";
-import ButtonContained from "@/src/components/ButtonContained";
+import StyledButton from "@/src/components/StyledButton";
 
 const PreLoginScreen = () => {
   const { colors } = useTheme();
@@ -16,26 +16,26 @@ const PreLoginScreen = () => {
         Elige rol de tu cuenta
       </Text>
 
-      <ButtonContained
+      <StyledButton
         buttonText="Soy peleador"
         onPress={() =>
           navigation.navigate("Register", { userType: "peleador" })
         }
       />
-      <ButtonContained
+      <StyledButton
         buttonText="Soy entrenador"
         onPress={() =>
           navigation.navigate("Register", { userType: "entrenador" })
         }
       />
-      <ButtonContained
+      <StyledButton
         buttonText="Soy dueño de un gimnasio "
         onPress={() =>
           navigation.navigate("Register", { userType: "gimnasio" })
         }
       />
       <View style={{ marginVertical: 32 }}>
-        <ButtonContained
+        <StyledButton
           buttonText="Ya tengo cuenta"
           mode="text"
           onPress={() => navigation.navigate("Login")}
