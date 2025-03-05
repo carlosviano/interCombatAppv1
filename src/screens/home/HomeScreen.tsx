@@ -11,7 +11,7 @@ export default function HomeScreen() {
   const cajasMock = ["Profile", "Calendario"];
   const { colors } = useTheme();
   const navigation = useNavigation<NavigationProp<MainStackParamList>>();
-
+  //Todo: Change images for icons in a future
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: colors.background }]}
@@ -22,7 +22,6 @@ export default function HomeScreen() {
           <Text style={styles.subtitle}>
             Quedan 10 días para tu próxima pelea
           </Text>
-
           <View style={styles.boxContainer}>
             <View style={styles.topRow}>
               {cajasMock.map((item) =>
