@@ -4,11 +4,13 @@ import { TextInput, TextInputProps } from "react-native-paper";
 
 type StyledTextInputProps = TextInputProps;
 
-export function StyledTextInput({ style, ...props }: StyledTextInputProps) {
+const StyledTextInput = ({ style, ...props }: StyledTextInputProps) => {
   return (
     <TextInput mode="outlined" style={[styles.default, style]} {...props} />
   );
-}
+};
+
+export default StyledTextInput;
 
 const styles = StyleSheet.create({
   default: {

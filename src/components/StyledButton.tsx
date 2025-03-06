@@ -6,12 +6,12 @@ type StyledButtonProps = Omit<ButtonProps, "children"> & {
   buttonText: string;
 };
 
-export default function StyledButton({
+const StyledButton = ({
   buttonText,
   style,
   mode = "contained",
   ...props
-}: StyledButtonProps) {
+}: StyledButtonProps) => {
   return (
     <Button
       buttonColor="#2C2C2C"
@@ -24,7 +24,9 @@ export default function StyledButton({
       {buttonText}
     </Button>
   );
-}
+};
+
+export default StyledButton;
 
 const styles = StyleSheet.create({
   buttonContainer: {

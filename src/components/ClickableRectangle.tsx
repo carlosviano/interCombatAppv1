@@ -12,10 +12,7 @@ export type ClickableRectangleProps = TouchableOpacityProps & {
   text: string;
 };
 
-export default function ClickableRectangle({
-  text,
-  onPress,
-}: ClickableRectangleProps) {
+const ClickableRectangle = ({ text, onPress }: ClickableRectangleProps) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.box} onPress={onPress}>
@@ -28,7 +25,9 @@ export default function ClickableRectangle({
       <Text style={styles.boxText}>{text}</Text>
     </View>
   );
-}
+};
+
+export default ClickableRectangle;
 
 const styles = StyleSheet.create({
   container: {

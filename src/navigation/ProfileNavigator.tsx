@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import ProfileScreen from "../screens/Profile/ProfileScreen";
-import EditProfileScreen from "../screens/Profile/EditProfile";
+import ProfileScreen from "../screens/profile/ProfileScreen";
+import EditProfileScreen from "../screens/profile/EditProfile";
 
 export type ProfileStackParamList = {
   Profile: undefined;

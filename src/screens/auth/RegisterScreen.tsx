@@ -16,7 +16,7 @@ import {
   RegisterFormField,
 } from "@/src/const/registerOptions";
 import StyledButton from "@/src/components/StyledButton";
-import { StyledTextInput } from "@/src/components/StyledInput";
+import StyledTextInput from "@/src/components/StyledInput";
 
 type RegisterScreenRouteProp = RouteProp<AuthStackParamList, "Register">;
 
