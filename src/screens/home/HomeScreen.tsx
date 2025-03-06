@@ -6,7 +6,7 @@ import { MainStackParamList } from "@/src/navigation/MainNavigator";
 import ClickableBox from "@/src/components/ClickableBox";
 import ClickableRectangle from "@/src/components/ClickableRectangle";
 
-export default function HomeScreen() {
+const HomeScreen = () => {
   const userName = "Carlos";
   const cajasMock = ["Profile", "Calendario"];
   const { colors } = useTheme();
@@ -39,14 +39,19 @@ export default function HomeScreen() {
             </View>
 
             <View style={styles.bottomRow}>
-              <ClickableRectangle text="Eventos" />
+              <ClickableRectangle
+                text="Eventos"
+                onPress={() => navigation.navigate("EventsFlow")}
+              />
             </View>
           </View>
         </View>
       </View>
     </SafeAreaView>
   );
-}
+};
+
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {

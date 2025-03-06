@@ -6,26 +6,26 @@ import {
   Image,
   TouchableOpacityProps,
   StyleSheet,
+  Dimensions,
 } from "react-native";
 
 export type ClickableBoxProps = TouchableOpacityProps & {
-  text: string;
+  text?: string;
   imageUrl: keyof typeof images;
 };
 
-const images = {
+export const images = {
   calendario: require("../assets/images/calendario.webp"),
   homepage: require("../assets/images/homepage.png"),
   profile: require("../assets/images/profile.png"),
 };
 
-export default function ClickableBox({
-  text,
-  imageUrl,
-  onPress,
-}: ClickableBoxProps) {
+const { width: screenWidth } = Dimensions.get("window");
+const itemWidth = screenWidth * 0.4;
+
+const ClickableBox = ({ text, imageUrl, onPress }: ClickableBoxProps) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { width: itemWidth }]}>
       <TouchableOpacity style={styles.box} onPress={onPress}>
         <Image
           source={images[imageUrl]}
@@ -33,14 +33,15 @@ export default function ClickableBox({
           resizeMode="cover"
         />
       </TouchableOpacity>
-      <Text style={styles.boxText}>{text}</Text>
+      {text && <Text style={styles.boxText}>{text}</Text>}
     </View>
   );
-}
+};
+
+export default ClickableBox;
 
 const styles = StyleSheet.create({
   container: {
-    width: "40%",
     margin: 10,
     alignItems: "center",
   },
