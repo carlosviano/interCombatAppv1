@@ -26,6 +26,7 @@ const HorizontalCarousel = ({
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <ClickableBox
+            boxSize={0.2}
             text={item.nombreEvento}
             imageUrl={item.imageString}
             onPress={() => {}}
@@ -42,7 +43,7 @@ export default HorizontalCarousel;
 
 const styles = StyleSheet.create({
   carouselContainer: {
-    width: "90%",
+    width: "100%",
     alignSelf: "center",
     marginTop: 10,
   },
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
     color: "#FFF",
     marginBottom: 10,
     textAlign: "left",
+    margin: 10,
   },
   flatListContent: {
     paddingVertical: 5,
