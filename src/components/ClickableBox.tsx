@@ -12,18 +12,24 @@ import {
 export type ClickableBoxProps = TouchableOpacityProps & {
   text?: string;
   imageUrl: keyof typeof images;
+  boxSize?: number;
 };
 
 export const images = {
-  calendario: require("../assets/images/calendario.webp"),
+  calendario: require("../assets/images/eventos.png"),
   homepage: require("../assets/images/homepage.png"),
   profile: require("../assets/images/profile.png"),
 };
 
 const { width: screenWidth } = Dimensions.get("window");
-const itemWidth = screenWidth * 0.4;
 
-const ClickableBox = ({ text, imageUrl, onPress }: ClickableBoxProps) => {
+const ClickableBox = ({
+  text,
+  imageUrl,
+  onPress,
+  boxSize = 0.4,
+}: ClickableBoxProps) => {
+  const itemWidth = screenWidth * boxSize;
   return (
     <View style={[styles.container, { width: itemWidth }]}>
       <TouchableOpacity style={styles.box} onPress={onPress}>
