@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, ScrollView, Dimensions } from "react-native";
 import { useTheme } from "react-native-paper";
 import ProfileBanner from "@/src/components/ProfileBanner";
 import ProfileInfoBoxes, {
@@ -8,6 +8,9 @@ import ProfileInfoBoxes, {
 import InformationImageContainer from "@/src/components/InformationImageContainer";
 import HorizontalCarousel from "@/src/components/HorizontalCarousel";
 import { eventos } from "../eventos/EventsMainPage";
+import ScreenContainer from "@/src/components/ScreenContainer";
+
+const { width: screenWidth } = Dimensions.get("window");
 
 const ProfileScreen = () => {
   const { colors } = useTheme();
@@ -23,36 +26,47 @@ const ProfileScreen = () => {
   // este circle que aumente la foto de perfil?? Not clikable si no?
 
   return (
-    <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background }]}
-    >
-      <View style={styles.content}>
-        <View className="profileBannerContainer">
-          <ProfileBanner role="Peleador" username="Carlos Viano Compan" />
+    <ScreenContainer>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
+        <View style={styles.content}>
+          <View style={styles.bannerContainer}>
+            <ProfileBanner role="Peleador" username="Carlos Viano Compan" />
+          </View>
+          <ProfileInfoBoxes user={user} />
+          <InformationImageContainer
+            title="Gimnasio"
+            value="Training Thai Studio,Malaga"
+          />
+          <InformationImageContainer
+            title="Entrenador"
+            value="Jorge Alonso Conde"
+          />
+          <HorizontalCarousel
+            title="Eventos de Carlos"
+            carouselData={eventos}
+          />
         </View>
-        <ProfileInfoBoxes user={user} />
-        <InformationImageContainer
-          title="Gimnasio"
-          value="Training Thai Studio,Malaga"
-        />
-        <InformationImageContainer
-          title="Entrenador"
-          value="Jorge Alonso Conde"
-        />
-        <HorizontalCarousel title="Eventos de Carlos" carouselData={eventos} />
-      </View>
-    </SafeAreaView>
+      </ScrollView>
+    </ScreenContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: "center" },
+  scrollContent: {
+    flexGrow: 1,
+  },
   content: {
-    width: "90%",
+    width: screenWidth * 0.9,
     alignSelf: "center",
-    justifyContent: "center",
     paddingVertical: 20,
   },
+  bannerContainer: {
+    width: "100%",
+  },
+  container: { flex: 1, alignItems: "center" },
   profileHeader: {
     display: "flex",
     flexDirection: "row",

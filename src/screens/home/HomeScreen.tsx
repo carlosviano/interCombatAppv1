@@ -5,6 +5,7 @@ import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { MainStackParamList } from "@/src/navigation/MainNavigator";
 import ClickableBox from "@/src/components/ClickableBox";
 import ClickableRectangle from "@/src/components/ClickableRectangle";
+import ScreenContainer from "@/src/components/ScreenContainer";
 
 const HomeScreen = () => {
   const userName = "Carlos";
@@ -13,9 +14,7 @@ const HomeScreen = () => {
   const navigation = useNavigation<NavigationProp<MainStackParamList>>();
   //Todo: Change images for icons in a future
   return (
-    <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background }]}
-    >
+    <ScreenContainer>
       <View style={styles.contentContainer}>
         <View style={styles.content}>
           <Text style={styles.title}>Bienvenido, {userName}</Text>
@@ -47,7 +46,7 @@ const HomeScreen = () => {
           </View>
         </View>
       </View>
-    </SafeAreaView>
+    </ScreenContainer>
   );
 };
 
